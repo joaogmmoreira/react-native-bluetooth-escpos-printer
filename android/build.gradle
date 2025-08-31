@@ -1,17 +1,18 @@
-// Em android/build.gradle do SEU FORK
+// Em android/build.gradle do SEU FORK (VERSÃO FINALMENTE CORRIGIDA)
 
 apply plugin: 'com.android.library'
 
 // Adiciona as configurações padrão do React Native
-apply from: '../../react-native/react.gradle'
+// ESTA É A LINHA CORRIGIDA COM O CAMINHO MODERNO
+apply from: '../../react-native/android/com/facebook/react/react.gradle'
 
 android {
     // Namespace é obrigatório em versões modernas do Android Gradle Plugin
     namespace "cn.jystudio.bluetooth"
 
     // As versões de SDK são herdadas do projeto principal para garantir compatibilidade
-    // compileSdkVersion rootProject.ext.compileSdkVersion
-    // buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         // minSdkVersion e targetSdkVersion também são herdados
