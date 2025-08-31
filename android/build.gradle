@@ -1,38 +1,28 @@
-buildscript {
-    repositories {
-        gradlePluginPortal()
-        google()
-        maven {url "https://repo.spring.io/plugins-snapshot/"}
-        mavenCentral()
-        maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url "$rootDir/../node_modules/react-native/android"
-        }
-        maven {
-            url 'https://maven.google.com'
-        }
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
-    }
-}
+// Em android/build.gradle do SEU FORK
 
 apply plugin: 'com.android.library'
 
+// Adiciona as configurações padrão do React Native
+apply from: '../../node_modules/react-native/react.gradle'
+
 android {
-    compileSdkVersion 34
-    buildToolsVersion "34.0.0"
+    // Namespace é obrigatório em versões modernas do Android Gradle Plugin
+    namespace "cn.jystudio.bluetooth"
+
+    // As versões de SDK são herdadas do projeto principal para garantir compatibilidade
+    // compileSdkVersion rootProject.ext.compileSdkVersion
+    // buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 34
-        versionCode 1
-        versionName "1.0"
+        // minSdkVersion e targetSdkVersion também são herdados
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
     }
+    
     lintOptions {
         abortOnError false
     }
+
     sourceSets {
         main {
             aidl.srcDirs = ['src/main/java']
@@ -40,21 +30,19 @@ android {
     }
 }
 
+// Repositórios modernos e necessários
 repositories {
-    maven {url "https://repo.spring.io/plugins-snapshot/"}
+    google()
     mavenCentral()
-    maven {
-        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        url "$rootDir/../node_modules/react-native/android"
-    }
-    maven {
-        url 'https://maven.google.com'
-    }
 }
 
 dependencies {
-    // compile fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.facebook.react:react-native:+'  // From node_modules
-    implementation group: 'com.android.support', name: 'support-v4', version: '27.0.0'
+    // Dependência padrão do React Native
+    implementation 'com.facebook.react:react-native:+'
+
+    // Substituímos a antiga 'support-v4' pela equivalente moderna do AndroidX
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    // Mantemos a dependência original para o leitor de código de barras
     implementation "com.google.zxing:core:3.3.0"
 }

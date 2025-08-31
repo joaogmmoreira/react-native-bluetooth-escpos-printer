@@ -1,3 +1,45 @@
-# Created by .ignore support plugin (hsz.mobi)
-examples
-.idea
+# Cache do Gradle no Android (Correto!)
+android/.gradle
+
+# Arquivos de workspace do Xcode (Correto!)
+ios/*.xcworkspace
+
+# Pasta de build do Xcode (Correto!)
+ios/build
+
+# Configurações do editor VSCode (Correto!)
+.vscode
+
+# Pasta de documentação (Correto, geralmente não é necessária no pacote final)
+docs
+Para um pacote React Native, é uma boa prática ignorar mais alguns arquivos e pastas para garantir um resultado ainda melhor.
+
+Aqui está uma versão mais completa e robusta que você pode usar para o .npmignore do seu fork. Ela inclui as suas regras e adiciona outras comuns para projetos React Native.
+
+### Versão Recomendada
+# Dependências do Node (Nunca publicar!)
+node_modules/
+
+# Logs de gerenciadores de pacotes
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Pasta de exemplo do projeto
+example/
+Example/
+
+# Pastas de build e cache
+android/.gradle
+android/app/build
+android/build
+ios/build
+
+# Arquivos de configuração de IDEs e editores
+.vscode/
+.idea/
+*.iml
+*.DS_Store
+
+# Outros
+docs/
