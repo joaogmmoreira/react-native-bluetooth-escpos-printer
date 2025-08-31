@@ -1,18 +1,17 @@
-// Em android/build.gradle do SEU FORK (VERSÃO DEFINITIVA)
+// Em android/build.gradle do SEU FORK (VERSÃO FINAL COM SDK EXPLÍCITO)
 
-// 1. Aplica o plugin da biblioteca Android E o novo plugin do React Native
 apply plugin: "com.android.library"
 apply plugin: "com.facebook.react"
 
 android {
     namespace "cn.jystudio.bluetooth"
 
-    // 2. As versões de SDK e outras configurações agora são
-    // gerenciadas automaticamente pelo plugin do React Native.
-    // Não precisamos mais declará-las aqui.
+    // ADICIONANDO DE VOLTA AS DECLARAÇÕES PARA SATISFAZER O GRADLE
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        // minSdkVersion, etc, são herdados.
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
     }
     
     lintOptions {
