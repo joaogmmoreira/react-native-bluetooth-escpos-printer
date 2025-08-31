@@ -1,23 +1,18 @@
-// Em android/build.gradle do SEU FORK (VERSÃO FINALMENTE CORRIGIDA)
+// Em android/build.gradle do SEU FORK (VERSÃO DEFINITIVA)
 
-apply plugin: 'com.android.library'
-
-// Adiciona as configurações padrão do React Native
-// ESTA É A LINHA CORRIGIDA COM O CAMINHO MODERNO
-apply from: '../../react-native/android/com/facebook/react/react.gradle'
+// 1. Aplica o plugin da biblioteca Android E o novo plugin do React Native
+apply plugin: "com.android.library"
+apply plugin: "com.facebook.react"
 
 android {
-    // Namespace é obrigatório em versões modernas do Android Gradle Plugin
     namespace "cn.jystudio.bluetooth"
 
-    // As versões de SDK são herdadas do projeto principal para garantir compatibilidade
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    // 2. As versões de SDK e outras configurações agora são
+    // gerenciadas automaticamente pelo plugin do React Native.
+    // Não precisamos mais declará-las aqui.
 
     defaultConfig {
-        // minSdkVersion e targetSdkVersion também são herdados
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        // minSdkVersion, etc, são herdados.
     }
     
     lintOptions {
@@ -31,19 +26,13 @@ android {
     }
 }
 
-// Repositórios modernos e necessários
 repositories {
     google()
     mavenCentral()
 }
 
 dependencies {
-    // Dependência padrão do React Native
-    implementation 'com.facebook.react:react-native:+'
-
-    // Substituímos a antiga 'support-v4' pela equivalente moderna do AndroidX
+    implementation "com.facebook.react:react-native:+"
     implementation 'androidx.appcompat:appcompat:1.6.1'
-
-    // Mantemos a dependência original para o leitor de código de barras
     implementation "com.google.zxing:core:3.3.0"
 }
