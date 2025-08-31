@@ -1,6 +1,6 @@
 {
   "name": "react-native-bluetooth-escpos-printer-juca1827",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React-Native plugin for the bluetooth ESC/POS printers.",
   "main": "index.js",
   "types": "index.d.ts",

@@ -3,7 +3,7 @@
 apply plugin: 'com.android.library'
 
 // Adiciona as configurações padrão do React Native
-apply from: '../../node_modules/react-native/react.gradle'
+apply from: '../../react-native/react.gradle'
 
 android {
     // Namespace é obrigatório em versões modernas do Android Gradle Plugin
